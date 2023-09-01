@@ -1,4 +1,5 @@
 import java.util.HashMap;
+
 public class Cursos {
   
   private String nombre;
@@ -8,9 +9,9 @@ public class Cursos {
   public Cursos(String nombre, int cantidadAlumnos) {
     this.nombre = nombre;
     this.cantidadAlumnos = cantidadAlumnos;
-    this.alumnos = new HashMap<>();
+    alumnos = new HashMap<>();
   }
-
+  
   public String getNombre() {
     return nombre;
   }

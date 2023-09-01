@@ -19,7 +19,7 @@ public class Alumnos {
     asistencia = true;
   }
   
-  public String getnombre() {
+  public String getNombre() {
     return nombre;
   }
   
@@ -27,7 +27,7 @@ public class Alumnos {
     return apellido;
   }
   
-  public String getrut() {
+  public String getRut() {
     return rut;
   }
 }
