@@ -22,7 +22,7 @@ public class Main {
             String nombreAlumno = "Alumno" + i;
             String apellidoAlumno = "Apellido" + i;
 
-            Alumnos alumno = new Alumnos(rut, nombreAlumno, apellidoAlumno);
+            Alumnos alumno = new Alumnos(nombreAlumno, apellidoAlumno, rut);
             curso.agregarAlumno(alumno);
         }
 
@@ -46,9 +46,13 @@ public class Main {
 
   public static void agregarAlumnos(String nombreCurso, String rut, String nombre, String apellido) throws IOException {
     for (Cursos cursoAux : arrayCursos) {
+      
       if (cursoAux.getNombre().equals(nombreCurso)) {
         Alumnos nuevoAlumno = new Alumnos(rut, nombre, apellido);
-        if (cursoAux.getAlumnos().containsKey(rut)) {
+        
+        HashMap<String, Alumnos> alumnoaux = cursoAux.getAlumnos();  
+        
+        if (alumnoaux.containsKey(rut)) {
           System.out.println("El alumno ya existe.");
           return;
         }
@@ -59,18 +63,15 @@ public class Main {
     }
     System.out.println("No se encontró el curso: " + nombreCurso);
   }
-
-  public static void pasarAsistenciaEnUnCurso(BufferedReader lector) throws IOException {
-    System.out.print("Ingrese el nombre del curso: ");
-    String nombre = lector.readLine();
+  //Sin completar
+  public static void pasarAsistenciaEnUnCurso(String nombreCurso) throws IOException {
     for (Cursos cursoaux : arrayCursos) {
-      if (cursoaux.getNombre().equals(nombre)) {
-        // Logic to mark attendance for the course
-        System.out.println("Asistencia pasada para el curso: " + nombre);
+      if (cursoaux.getNombre().equals(nombreCurso)) {
+        System.out.println("Asistencia pasada para el curso: " + nombreCurso);
         return;
       }
     }
-    System.out.println("No se encontró el curso: " + nombre);
+    System.out.println("No se encontró el curso: " + nombreCurso);
   }
 
   public static void mostrarTodosLosCursos() {
@@ -102,7 +103,7 @@ public class Main {
       System.out.println("1. Agregar curso");
       System.out.println("2. Eliminar curso");
       System.out.println("3. Agregar Alumnos");
-      System.out.println("4. Pasar asistencia en un curso");
+      System.out.println("4. Pasar asistencia en un curso (Sin completar)");
       System.out.println("5. Mostrar todos los cursos");
       System.out.println("6. Mostrar alumnos de un curso");
       System.out.println("7. Salir");
@@ -134,7 +135,9 @@ public class Main {
           agregarAlumnos(nombreCurso, rut, nombreAgregar, apellidoAgregar);
           break;
         case 4:
-          pasarAsistenciaEnUnCurso(lector);
+          System.out.print("Ingrese el nombre del curso: ");
+          String nombreAsistencia = lector.readLine();
+          pasarAsistenciaEnUnCurso(nombreAsistencia);
           break;
         case 5:
           mostrarTodosLosCursos();

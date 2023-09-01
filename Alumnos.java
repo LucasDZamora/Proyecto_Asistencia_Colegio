@@ -5,29 +5,37 @@ public class Alumnos {
   private String rut;
   private boolean asistencia;
 
-  public Alumnos(String rut, String nombre, String apellido) {
-    this.rut = rut;
-    this.nombre = nombre;
-    this.apellido = apellido;
-    this.asistencia = false;
-  }
+    public Alumnos(String nombre, String apellido, String rut) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.rut = rut;
+        this.asistencia = false;
+    }
 
-  public boolean tieneAsistencia() {
-    return asistencia;
-  }
-  public void marcarAsistencia() {
-    asistencia = true;
-  }
-  
-  public String getNombre() {
-    return nombre;
-  }
-  
-  public String getApellido() {
-    return apellido;
-  }
-  
-  public String getRut() {
-    return rut;
-  }
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getRut() {
+        return rut;
+    }
+
+    public void setRut(String rut) {
+        this.rut = rut;
+    }
+   
+
 }
+  

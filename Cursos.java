@@ -12,11 +12,24 @@ public class Cursos {
     alumnos = new HashMap<>();
   }
   
+  public Cursos(String nombre) {
+    this.nombre = nombre;
+    this.cantidadAlumnos = 0;
+    alumnos = new HashMap<>();
+  }
+  
   public String getNombre() {
     return nombre;
   }
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
+  
   public int getCantidadAlumnos() {
     return cantidadAlumnos;
+  }
+  public void setCantidadAlumnos(int cantidadAlumnos) {
+    this.cantidadAlumnos = cantidadAlumnos;
   }
 
   public void agregarAlumno(Alumnos alumno){
@@ -25,5 +38,8 @@ public class Cursos {
 
   public HashMap<String, Alumnos> getAlumnos() {
     return alumnos;
+  }
+  public void setAlumnos(HashMap<String, Alumnos> alumnos) {
+    this.alumnos = alumnos;
   }
 }
