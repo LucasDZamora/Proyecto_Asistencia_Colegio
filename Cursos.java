@@ -20,7 +20,7 @@ public class Cursos {
   }
 
   public void agregarAlumno(Alumnos alumno){
-    alumnos.put(alumno.getrut(), alumno);
+    alumnos.put(alumno.getRut(), alumno);
   }
 
   public HashMap<String, Alumnos> getAlumnos() {
