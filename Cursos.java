@@ -32,7 +32,12 @@ public class Cursos {
     this.cantidadAlumnos = cantidadAlumnos;
   }
 
-  public void agregarAlumno(Alumnos alumno){
+  public void agregarAlumno(String nombre, String rut) {
+    Alumnos alumno = new Alumnos(nombre, rut);
+    alumnos.put(rut, alumno);
+  }
+
+  public void agregarAlumno(Alumnos alumno) {
     alumnos.put(alumno.getRut(), alumno);
   }
 

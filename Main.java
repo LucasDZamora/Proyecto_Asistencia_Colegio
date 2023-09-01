@@ -4,7 +4,7 @@ import java.util.*;
 public class Main {
 
   private static ArrayList<Cursos> arrayCursos = new ArrayList<>();
-  
+
   
   public static void agregarCurso(String nombre, int cantidad) throws IOException {
     Cursos cursoaux = new Cursos(nombre,cantidad);
@@ -154,5 +154,5 @@ public class Main {
           break;
       }
     }
-  } // Fin método main
-} // Fin clase
+  } 
+}
