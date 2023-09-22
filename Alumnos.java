@@ -1,21 +1,24 @@
+
+import java.util.ArrayList;
+
 public class Alumnos {
   
   private String nombre;
   private String apellido;
   private String rut;
-  private boolean asistencia;
+  private ArrayList<Asistencia> asistencia;
 
     public Alumnos(String nombre, String apellido, String rut) {
       this.nombre = nombre;
       this.apellido = apellido;
       this.rut = rut;
-      this.asistencia = false;
+      this.asistencia = new ArrayList<>();
     }
     public Alumnos(String nombre, String apellido) {
       this.nombre = nombre;
       this.apellido = apellido;
       this.rut = "";
-      this.asistencia = false;
+      this.asistencia = new ArrayList<>();
     }
 
     public String getNombre() {
@@ -37,25 +40,16 @@ public class Alumnos {
     public String getRut() {
         return rut;
     }
-
     public void setRut(String rut) {
         this.rut = rut;
     }
-    public void setAsistencia(boolean asistencia) {
-      this.asistencia = asistencia;
+    public ArrayList<Asistencia> getAsistencia() {
+        return asistencia;
     }
 
-    public void setAsistencia(String estado) {
-      if (estado.equalsIgnoreCase("Presente")) {
-        this.asistencia = true;
-      } else if (estado.equalsIgnoreCase("Ausente")) {
-          this.asistencia = false;
-      } else {
-        // hacer caso no valido.
-      }
+    public void agregarAsistencia(Asistencia asistencia) {
+        this.asistencia.add(asistencia);
     }
-  
-   
-
 }
+
   

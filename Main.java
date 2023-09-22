@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class Main{
 
   private static ArrayList<Cursos> arrayCursos = new ArrayList<>();
 
@@ -48,47 +48,34 @@ public class Main {
     for (Cursos cursoAux : arrayCursos) {
       
       if (cursoAux.getNombre().equals(nombreCurso)) {
-        Alumnos nuevoAlumno = new Alumnos(rut, nombre, apellido);
-        
-        HashMap<String, Alumnos> alumnoaux = cursoAux.getAlumnos();  
-        
-        if (alumnoaux.containsKey(rut)) {
-          System.out.println("El alumno ya existe.");
-          return;
-        }
-        cursoAux.agregarAlumno(nuevoAlumno);
-        System.out.println("Alumno agregado al curso: " + nombreCurso);
-        return;
+        cursoAux.agregarAlumno(rut, nombre, apellido);
       }
     }
     System.out.println("No se encontró el curso: " + nombreCurso);
   }
   //Sin completar
-  public static void pasarAsistenciaEnUnCurso(String nombreCurso) throws IOException {
-    for (Cursos cursoaux : arrayCursos) {
-      if (cursoaux.getNombre().equals(nombreCurso)) {
-        System.out.println("Asistencia pasada para el curso: " + nombreCurso);
-        return;
-      }
+  public static void pasarAsistenciaEnUnCurso(String nombreCurso, BufferedReader lector) throws IOException {
+    for (int i = 0; i < arrayCursos.size(); i++) {
+        Cursos cursoAux = arrayCursos.get(i);
+        if (cursoAux.getNombre().equals(nombreCurso)) {
+          cursoAux.pasarAsistenciaEnUnCurso(lector);
+        }
     }
     System.out.println("No se encontró el curso: " + nombreCurso);
   }
 
+
+
   public static void mostrarTodosLosCursos() {
     for (Cursos curso : arrayCursos) {
-      System.out.println("Curso: " + curso.getNombre());
-      System.out.println("Cantidad de Alumnos: " + curso.getAlumnos().size());
+      curso.mostrarInfoCurso();
     }
   }
 
   public static void mostrarAlumnosDeUnCurso(String nombreCursoVer) {
     for (Cursos curso : arrayCursos) {
       if (curso.getNombre().equals(nombreCursoVer)) {
-        System.out.println("Alumnos en el curso " + nombreCursoVer + ":");
-        for (Alumnos alumno : curso.getAlumnos().values()) {
-          System.out.println("- Nombre: " + alumno.getNombre() + " Apellido: " + alumno.getApellido() + " Rut: " + alumno.getRut());
-        }
-        return;
+        curso.mostrarAlumnos();
       }
     }
     System.out.println("No se encontró el curso: " + nombreCursoVer);
@@ -103,7 +90,7 @@ public class Main {
       System.out.println("1. Agregar curso");
       System.out.println("2. Eliminar curso");
       System.out.println("3. Agregar Alumnos");
-      System.out.println("4. Pasar asistencia en un curso (Sin completar)");
+      System.out.println("4. Pasar asistencia en un curso");
       System.out.println("5. Mostrar todos los cursos");
       System.out.println("6. Mostrar alumnos de un curso");
       System.out.println("7. Salir");
@@ -137,7 +124,7 @@ public class Main {
         case 4:
           System.out.print("Ingrese el nombre del curso: ");
           String nombreAsistencia = lector.readLine();
-          pasarAsistenciaEnUnCurso(nombreAsistencia);
+          pasarAsistenciaEnUnCurso(nombreAsistencia,lector);
           break;
         case 5:
           mostrarTodosLosCursos();
